@@ -40,7 +40,7 @@ include './controllers/create_controller.php';
 		</div>
 		<div>
 			<label for="duration">Durée</label>
-			<input type="time" name="duration" value="<?php echo (isset($_SESSION['duration'])) ? htmlspecialchars($_SESSION['duration']) : '' ?>">
+			<input type="duration" name="duration" value="<?php echo (isset($_SESSION['duration'])) ? htmlspecialchars($_SESSION['duration']) : '' ?>">
 			<div <?php echo (isset($errors['duration'])) ? 'class="error"' : ""; ?>><?php echo $errors['duration'] ?? "" ?></div>
 		</div>
 		<div>

@@ -39,7 +39,7 @@ class Validator{
         if(empty($val)){
             $this->add_error ('name', 'name cannot be empty');
         } else {
-            if (!preg_match('/^[a-zA-ZÀ-ù0-9]{6,30}$/', $val)){
+            if (!preg_match('/^[\sa-zA-ZÀ-ù0-9]{6,30}$/', $val)){
             $this->add_error ('name', 'name must be 6 to 30 characters and alphanumeric');
         } else { 
             $_SESSION['name'] = $val;
@@ -94,8 +94,8 @@ class Validator{
         if(empty($val)){
             $this->add_error ('duration', 'duration cannot be empty');
         } else {
-            if (!preg_match('/^\d{2}:\d{2}$/', $val)){
-            $this->add_error ('duration', 'duration must be in format "00:00" ');
+            if (!preg_match('/^\d{2}:\d{2}:\d{2}$/', $val)){
+            $this->add_error ('duration', 'duration must be in format "00:00:00" ');
 
         } else {
             $_SESSION['duration'] = $val;
