@@ -33,6 +33,8 @@ $sql = "INSERT INTO Météo (Ville, haut, bas) VALUES ('".$ville."', ".$max.", "
 
 $insert = $bdd->exec($sql);
 
+header("Location: wow.php");
+
 }
 }
 
@@ -44,6 +46,8 @@ function delete_message(){
 if (isset($_GET['checkbox'])){
 $readdb = "DELETE FROM Météo WHERE Ville = '".$_GET['checkbox']."'";
 $bdd->exec($readdb);
+header("Location: wow.php");
+
 }
 
 ?>
