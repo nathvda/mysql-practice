@@ -1,10 +1,8 @@
 <?php 
 session_start();
 
-include './inc/sqlconnect.php';
+include './controllers/read_controller.php';
 
-$readdb = "SELECT * FROM hiking";
-$read = $bdd->query($readdb)->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -16,6 +14,7 @@ $read = $bdd->query($readdb)->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="css/basics.css" media="screen" title="no title" charset="utf-8">
   </head>
   <body>
+    <a href="./create.php">Add a new track.</a>
     <h1>Liste des randonnées</h1>
     <table>
 
@@ -53,7 +52,6 @@ foreach( $read as $enregistrement => $value){
     echo $value['id'];
     echo '">Supprimer</button></form></td>';
     echo '</tr>';
-
 }
 
 echo '</table>';

@@ -1,5 +1,4 @@
 <?php
-/**** Supprimer une randonnée ****/
 include './inc/sqlconnect.php';
 
 if (isset($_POST['id'])){

@@ -1,20 +1,15 @@
 <?php 
-include './inc/sqlconnect.php';
+session_start();
+include './controllers/create_controller.php';
+include './models/validator_class.php';
 
-if ($_SERVER['REQUEST_METHOD'] == "POST"){
+$name = "youhou";
 
-$name = $_POST['name'];
-$difficulty = $_POST['difficulty'];
-$distance = $_POST['distance'];
-$duration = $_POST['duration'];
-$height_difference = $_POST['height_difference'];
-$available = $_POST['available'];
+$info = new Validator($name,$name,$name,$name,$name,$name);
 
-$create = "INSERT INTO hiking (name, difficulty,distance, duration, height_difference, available) VALUES ('$name','$difficulty',$distance,'$duration',$height_difference, '$available')";
-$bdd->exec($create);
-header('Location: read.php');
-}
+$info->validate($name);
 
+var_dump($info);
 ?>
 
 <!DOCTYPE html>
