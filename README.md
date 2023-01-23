@@ -17,4 +17,8 @@ To use the forms, you will need a local server or a distant server. You can use 
 
 These informations will be used when creating the connection to the database for the CRUD operations.
 
+2023-01-23 : 
+- Validator Class added.
+- Started using MVC model (but probably not that well yet);
+
 

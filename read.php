@@ -10,13 +10,15 @@ include './controllers/read_controller.php';
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="description" content="Check out our track!">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Randonnées</title>
-    <link rel="stylesheet" href="css/basics.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="./assets/css/basics.css" media="screen" title="no title" charset="utf-8">
   </head>
-  <body>
-    <a href="./create.php">Add a new track.</a>
+  <body> <main>
+    <a href="./create.php" class="menu">Add a new track.</a>
     <h1>Liste des randonnées</h1>
-    <table>
+   
 
 <?php 
 
@@ -50,7 +52,7 @@ foreach( $read as $enregistrement => $value){
     }
     echo '<td><form method="post" action="./delete.php"><button type="submit" name="id" value="';
     echo $value['id'];
-    echo '">Supprimer</button></form></td>';
+    echo '" class="delete">X</button></form></td>';
     echo '</tr>';
 }
 
@@ -59,6 +61,6 @@ echo '</table>';
 
 ?>
 
-    </table>
+</main>
   </body>
 </html>
