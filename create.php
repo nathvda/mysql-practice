@@ -2,6 +2,13 @@
 session_start();
 include './controllers/create_controller.php';
 
+if(!isset($_SESSION['user'])){
+	
+	header('Location : log_in.php');
+} else {
+	echo "not logged in";
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -14,6 +21,7 @@ include './controllers/create_controller.php';
 <body>
 	<main><a href="/read.php" class="menu">Liste des données</a>
 	<h1>Ajouter</h1>
+	<?php echo ($succeed == true) ? '<div class="green">Randonnée ajoutée à la base de donnée</div>': ''; ?>
 	<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post">
 		<div>
 			<label for="name">Name</label>

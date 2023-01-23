@@ -2,6 +2,8 @@
 include './inc/sqlconnect.php';
 require './models/validator_class.php';
 
+$succeed = false;
+
 if ($_SERVER['REQUEST_METHOD'] == "POST"){
 
     if (isset($_POST['submit'])){
@@ -31,6 +33,7 @@ $available = $_SESSION['available'];
 $to_exec->execute();
 
 echo "form properly sent";
+$succeed = true;
 
 $_SESSION = [];
 
