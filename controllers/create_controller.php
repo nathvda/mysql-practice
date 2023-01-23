@@ -1,14 +1,16 @@
 <?php
 include './inc/sqlconnect.php';
+require './models/validator_class.php';
 
 if ($_SERVER['REQUEST_METHOD'] == "POST"){
 
-    $name = $_POST['name'];
-    $difficulty = $_POST['difficulty'];
-    $distance = $_POST['distance'];
-    $duration = $_POST['duration'];
-    $height_difference = $_POST['height_difference'];
-    $available = $_POST['available'];
+    if (isset($_POST['submit'])){
+
+        $validation = new Validator($_POST);
+        $errors = $validation->validate_form();
+    }
+
+if (count($errors) == 0){
 
 $create = "INSERT INTO hiking (name, difficulty,distance, duration, height_difference, available) VALUES (:name,:difficulty,:distance,:duration,:height_difference,:available)";
 $to_exec = $bdd->prepare($create);
@@ -20,15 +22,21 @@ $to_exec->bindParam(':duration', $duration);
 $to_exec->bindParam(':height_difference', $height_difference);
 $to_exec->bindParam(':available', $available);
 
-$name = $_POST['name'];
-$difficulty = $_POST['difficulty'];
-$distance = $_POST['distance'];
-$duration = $_POST['duration'];
-$height_difference = $_POST['height_difference'];
-$available = $_POST['available'];
+$name = $_SESSION['name'];
+$difficulty = $_SESSION['difficulty'];
+$distance = $_SESSION['distance'];
+$duration = $_SESSION['duration'];
+$height_difference = $_SESSION['height_difference'];
+$available = $_SESSION['available'];
 $to_exec->execute();
 
-header('Location: read.php');
+echo "form properly sent";
+
+$_SESSION = [];
+
+} else {
+    echo "failed to send form";
+}
 }
 
 ?>

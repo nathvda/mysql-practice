@@ -1,15 +1,7 @@
 <?php 
 session_start();
 include './controllers/create_controller.php';
-include './models/validator_class.php';
 
-$name = "youhou";
-
-$info = new Validator($name,$name,$name,$name,$name,$name);
-
-$info->validate($name);
-
-var_dump($info);
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +17,8 @@ var_dump($info);
 	<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post">
 		<div>
 			<label for="name">Name</label>
-			<input type="text" name="name" value="">
+			<input type="text" name="name" value="<?php echo (isset($_SESSION['name'])) ? htmlspecialchars($_SESSION['name']) : '' ?>">
+			<div <?php echo (isset($errors['name'])) ? 'class="error"' : ""; ?>><?php echo $errors['name'] ?? '' ?></div>
 		</div>
 
 		<div>
@@ -37,25 +30,30 @@ var_dump($info);
 				<option value="difficile">Difficile</option>
 				<option value="très difficile">Très difficile</option>
 			</select>
+			<div <?php echo (isset($errors['difficulty'])) ? 'class="error"' : ""; ?>><?php echo $errors['difficulty'] ?? "" ?></div>
 		</div>
 
 		<div>
 			<label for="distance">Distance</label>
-			<input type="text" name="distance" value="">
+			<input type="text" name="distance" value="<?php echo (isset($_SESSION['distance'])) ? htmlspecialchars($_SESSION['distance']) : '' ?>">
+			<div <?php echo (isset($errors['distance'])) ? 'class="error"' : ""; ?>><?php echo $errors['distance'] ?? "" ?></div>
 		</div>
 		<div>
 			<label for="duration">Durée</label>
-			<input type="time" name="duration" value="">
+			<input type="time" name="duration" value="<?php echo (isset($_SESSION['duration'])) ? htmlspecialchars($_SESSION['duration']) : '' ?>">
+			<div <?php echo (isset($errors['duration'])) ? 'class="error"' : ""; ?>><?php echo $errors['duration'] ?? "" ?></div>
 		</div>
 		<div>
 			<label for="height_difference">Dénivelé</label>
-			<input type="text" name="height_difference" value="">
+			<input type="text" name="height_difference" value="<?php echo (isset($_SESSION['height_difference'])) ? htmlspecialchars($_SESSION['height_difference']) : '' ?>">
+			<div <?php echo (isset($errors['height_difference'])) ? 'class="error"' : ""; ?>><?php echo $errors['height_difference'] ?? '' ?></div>
 		</div>
 		<div>
 			<label for="available">Disponible</label>
-			<input type="text" name="available" value="">
+			<input type="text" name="available" value="<?php echo (isset($_SESSION['available'])) ? htmlspecialchars($_SESSION['available']) : '' ?>">
+			<div <?php echo (isset($errors['available'])) ? 'class="error"' : ""; ?>><?php echo $errors['available'] ?? "" ?></div>
 		</div>
-		<button type="submit" name="button">Envoyer</button>
+		<button type="submit" name="submit">Envoyer</button>
 	</form>
 </body>
 </html>

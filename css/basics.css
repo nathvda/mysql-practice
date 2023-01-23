@@ -1,5 +1,18 @@
+form{
+  width:25vw;
+}
 label, select, input{
   width: 150px;
   display: inline-block;
   margin: 5px 0;
+}
+
+.error{
+  background-color: #ff000050;
+  display:inline-block;
+  width:20rem;
+  padding:1em;
+  border:1px solid crimson;
+  color:red;
+  border-radius:0.3em;
 }
