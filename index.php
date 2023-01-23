@@ -40,8 +40,11 @@ function delete_message(){
     echo "We tried";
 }
 
+
+if (isset($_GET['checkbox'])){
 $readdb = "DELETE FROM Météo WHERE Ville = '".$_GET['checkbox']."'";
 $bdd->exec($readdb);
+}
 
 ?>
 <!DOCTYPE html>
