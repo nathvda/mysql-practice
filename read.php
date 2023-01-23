@@ -1,7 +1,7 @@
 <?php 
 session_start();
 
-require './inc/sqlconnect.php';
+include './inc/sqlconnect.php';
 
 $readdb = "SELECT * FROM hiking";
 $read = $bdd->query($readdb)->fetchAll(PDO::FETCH_ASSOC);
@@ -29,19 +29,32 @@ foreach( $read as $enregistrement => $value){
 
     foreach($value as $key => $val){
 
-      $_SESSION[$key] = $val;
     echo '<td>';
     echo '<a href="update.php?id=';
     echo $value['id'];
+    echo '&name=';
+    echo $value['name'];
+    echo '&difficulty=';
+    echo $value['difficulty'];
+    echo '&distance=';
+    echo $value['distance'];
+    echo '&duration=';
+    echo $value['duration'];
+    echo '&height_difference=';
+    echo $value['height_difference'];
+    echo '&available=';
+    echo $value['available'];
     echo '">';
     echo $val;
     echo '</a>';
     echo '</td>';
     }
+    echo '<td><form method="post" action="./delete.php"><button type="submit" name="id" value="';
+    echo $value['id'];
+    echo '">Supprimer</button></form></td>';
     echo '</tr>';
 
 }
-var_dump($_SESSION);
 
 echo '</table>';
 

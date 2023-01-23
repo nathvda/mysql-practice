@@ -1,8 +1,16 @@
 <?php 
-require './inc/sqlconnect.php';
+include './inc/sqlconnect.php';
 
 if ($_SERVER['REQUEST_METHOD'] == "POST"){
-$create = "INSERT INTO hiking (name, difficulty,distance, duration, height_difference) VALUES ('".$_POST['name']."','".$_POST['difficulty']."',".$_POST['distance'].",'".$_POST['duration']."',".$_POST['height_difference'].")";
+
+$name = $_POST['name'];
+$difficulty = $_POST['difficulty'];
+$distance = $_POST['distance'];
+$duration = $_POST['duration'];
+$height_difference = $_POST['height_difference'];
+$available = $_POST['available'];
+
+$create = "INSERT INTO hiking (name, difficulty,distance, duration, height_difference, available) VALUES ('$name','$difficulty',$distance,'$duration',$height_difference, '$available')";
 $bdd->exec($create);
 header('Location: read.php');
 }
@@ -47,6 +55,10 @@ header('Location: read.php');
 		<div>
 			<label for="height_difference">Dénivelé</label>
 			<input type="text" name="height_difference" value="">
+		</div>
+		<div>
+			<label for="available">Disponible</label>
+			<input type="text" name="available" value="">
 		</div>
 		<button type="submit" name="button">Envoyer</button>
 	</form>
