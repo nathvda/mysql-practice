@@ -1,13 +1,7 @@
 <?php 
 session_start();
-include './controllers/create_controller.php';
 
-if(!isset($_SESSION['user'])){
-	
-	header('Location : log_in.php');
-} else {
-	echo "not logged in";
-}
+include './controllers/create_controller.php';
 
 ?>
 

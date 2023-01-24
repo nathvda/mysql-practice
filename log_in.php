@@ -1,5 +1,5 @@
-<?php 
-
+<?php
+session_start();
 require './models/login_validator.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     $errors = $login->validate_login();
 
-    var_dump($errors);
+    var_dump($_SESSION['logged_in']);
 }
 
 ?>
