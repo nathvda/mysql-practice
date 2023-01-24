@@ -60,3 +60,10 @@ include './controllers/create_controller.php';
 </main>
 </body>
 </html>
+
+<?php if($_SESSION['logged_in'] == false){
+    header('Location: ./log_in.php');
+    exit();
+}
+
+?>

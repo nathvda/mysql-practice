@@ -3,6 +3,11 @@ session_start();
 
 include './controllers/read_controller.php';
 
+if(!isset($_SESSION['logged_in']) OR empty($_SESSION['logged_in'])){
+  $_SESSION['logged_in'] = false;
+}
+
+var_dump($_SESSION['logged_in']);
 
 ?>
 
@@ -16,9 +21,8 @@ include './controllers/read_controller.php';
     <link rel="stylesheet" href="./assets/css/basics.css" media="screen" title="no title" charset="utf-8">
   </head>
   <body> <main>
-    <a href="./create.php" class="menu">Add a new track.</a>
+    <?php echo ($_SESSION['logged_in'] == true) ? '<a href="./create.php" class="menu">Add a new track.</a>' : '<a href="./log_in.php">Se connecter</a>' ; ?>
     <h1>Liste des randonnées</h1>
-   
 
 <?php 
 
@@ -26,7 +30,6 @@ echo '<table>';
 
 foreach( $read as $enregistrement => $value){
     echo '<tr>';
-
 
     foreach($value as $key => $val){
 
@@ -50,9 +53,13 @@ foreach( $read as $enregistrement => $value){
     echo '</a>';
     echo '</td>';
     }
+    if($_SESSION['logged_in'] == true){ 
     echo '<td><form method="post" action="./delete.php"><button type="submit" name="id" value="';
     echo $value['id'];
+
+
     echo '" class="delete">X</button></form></td>';
+   }
     echo '</tr>';
 }
 
@@ -61,6 +68,9 @@ echo '</table>';
 
 ?>
 
+<?php echo ($_SESSION['logged_in'] == true) ? '<form method="post" action="log_out.php" class="menu"><button type="submit">Se deconnecter</button></form>' : ''; ?>
+
 </main>
   </body>
 </html>
+

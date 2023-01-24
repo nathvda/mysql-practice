@@ -36,7 +36,7 @@ class Login_Validator{
             if (!preg_match('/^[a-zA-Z0-9]{3,}$/',$val)){
                 $this->add_error('username', 'username must be at least 8 chars and alphanumeric');
             } else {
-                $_SESSION['username'] = $val;
+                $this->params['username'] = $val ;
             }
         }
     }
@@ -52,7 +52,7 @@ class Login_Validator{
             if (!preg_match('/^[a-zA-Z0-9)(]{8,}$/',$val)){
                 $this->add_error('password', 'password must be at least 8 chars and alphanumeric');
             } else {
-                $_SESSION['password'] = $val;
+                $this->params['password'] = $val ;
             }
         }
 
@@ -60,19 +60,10 @@ class Login_Validator{
 
     private function check_password(){
 
-        try { 
-            
-            $bdd = new PDO("mysql:host=localhost;dbname=test", "root", '');
-            return $bdd;
-
-        } catch (exception $e) {
-        
-        die('Erreur = ' .$e -> getMessage());
-
-        }
+        require './inc/sqlconnect.php';
 
         $val = $this->params['username'];
-        $sql = "SELECT * FROM user WHERE username=$val"; 
+        $sql = "SELECT * FROM user WHERE username='$val'"; 
         $infos = $bdd->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 
         if($this->params['password'] == $infos[0]['password']){
@@ -81,8 +72,9 @@ class Login_Validator{
 
         } else {
             $_SESSION['logged_in'] = false;
+            $this->add_error('password', "wrong password");
         }
-    
+
     }
 
     private function add_error($key,$value){

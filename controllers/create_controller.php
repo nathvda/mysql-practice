@@ -4,6 +4,8 @@ require './models/validator_form.php';
 
 $succeed = false;
 
+var_dump($_SESSION['logged_in']);
+
 if ($_SERVER['REQUEST_METHOD'] == "POST"){
 
     if (isset($_POST['submit'])){

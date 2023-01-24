@@ -9,6 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $errors = $login->validate_login();
 
     var_dump($_SESSION['logged_in']);
+
 }
 
 ?>
@@ -37,3 +38,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     </main>
 </body>
 </html>
+
+<?php 
+
+if($_SESSION['logged_in'] == true){
+    header('Location: ./read.php');
+    exit();
+}
+
+?>
