@@ -21,7 +21,7 @@ class Login_Validator{
 
         $this->validate_userName();
         $this->validate_password();
-        $this->check_password($this->params['username']);
+        $this->check_password();
 
         return $this->errors;
     }
@@ -59,7 +59,7 @@ class Login_Validator{
 
     }
 
-    private function check_password($name){
+    private function check_password(){
 
         try { $bdd = new PDO("mysql:host=localhost;dbname=test", "root", '');
             return $bdd;
@@ -70,14 +70,17 @@ class Login_Validator{
 
         }
 
-        $sql = "SELECT * FROM user WHERE username='$name'"; 
+        $val = $this->params['username'];
+        $sql = "SELECT * FROM user WHERE username=$val"; 
         $infos = $bdd->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 
-        if($infos['password'] !== $this->params['password']){
+        if($infos[0]['password'] !== $this->params['password']){
 
             $this->add_error('password', 'wrong password');
 
-        } 
+        } else { 
+            $_SESSION['username'] = $this->params['password'];
+        }
 
     }
 

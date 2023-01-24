@@ -1,11 +1,14 @@
 <?php 
+
 require './models/login_validator.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     $login = new Login_Validator($_POST);
+
     $errors = $login->validate_login();
-    
+
+    var_dump($errors);
 }
 
 ?>
@@ -22,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 <body>
     <main>
         <h1>Authentification page</h1>
-        <form action="" method="post">
+        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
             <label for="username">Username</label>
             <input name="username" id="username" type="text">
             <div <?php echo (isset($errors['username'])) ? 'class="error"' : ""; ?>><?php echo $errors['username'] ?? '' ?></div>

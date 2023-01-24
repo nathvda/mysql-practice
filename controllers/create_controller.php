@@ -1,6 +1,6 @@
 <?php
 include './inc/sqlconnect.php';
-require './models/form_validator.php';
+require './models/validator_form.php';
 
 $succeed = false;
 
