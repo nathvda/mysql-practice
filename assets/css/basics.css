@@ -65,6 +65,16 @@ input:focus-within, select:focus-within {
 	transition: 0.2s;
 }
 
+button[type="submit"] {
+	background-color: #256c3e;
+	color: white;
+	padding: 1em 4em;
+	border-radius: 0.2em;
+	border: 0;
+	font-variant: all-small-caps;
+	font-weight: bold;
+}
+
 .delete {
 	appearance: none;
 	border: 0;

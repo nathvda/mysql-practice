@@ -41,23 +41,23 @@ include './controllers/update_controller.php';
 		
 		<div>
 			<label for="distance">Distance</label>
-			<input type="text" name="distance" value="<?php echo $distance; ?>">
+			<input type="text" name="distance" value="<?php echo (isset($_GET['distance'])) ? htmlspecialchars($_GET['distance']) : htmlspecialchars($_SESSION['distance']) ?>">
 			<div <?php echo (isset($errors['distance'])) ? 'class="error"' : ""; ?>><?php echo $errors['distance'] ?? "" ?></div>
 			
 		</div>
 		<div>
 			<label for="duration">Durée</label>
-			<input type="duration" name="duration" value="<?php echo $duration; ?>">
+			<input type="duration" name="duration" value="<?php echo (isset($_GET['duration'])) ? htmlspecialchars($_GET['duration']) : htmlspecialchars($_SESSION['duration']) ?>">
 			<div <?php echo (isset($errors['duration'])) ? 'class="error"' : ""; ?>><?php echo $errors['duration'] ?? "" ?></div>
 		</div>
 		<div>
 			<label for="height_difference">Dénivelé</label>
-			<input type="text" name="height_difference" value="<?php echo $height_difference; ?>">
+			<input type="text" name="height_difference" value="<?php echo (isset($_GET['height_difference'])) ? htmlspecialchars($_GET['height_difference']) : htmlspecialchars($_SESSION['height_difference']) ?>">
 			<div <?php echo (isset($errors['height_difference'])) ? 'class="error"' : ""; ?>><?php echo $errors['height_difference'] ?? '' ?></div>
 		</div>
 		<div>
 			<label for="available">Disponible</label>
-			<input type="text" name="available" value="<?php echo $available; ?>">
+			<input type="text" name="available" value="<?php echo (isset($_GET['available'])) ? htmlspecialchars($_GET['available']) : htmlspecialchars($_SESSION['available']) ?>">
 			<div <?php echo (isset($errors['available'])) ? 'class="error"' : ""; ?>><?php echo $errors['available'] ?? "" ?></div>
 		</div>
 		<button type="submit" value= "envoyer" name="submit">Envoyer</button>

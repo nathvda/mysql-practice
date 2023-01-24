@@ -1,6 +1,6 @@
 <?php
 include './inc/sqlconnect.php';
-include './models/validator_class.php';
+include './models/form_validator.php';
 
 if (isset($_GET['id'])){
 	$id = $_GET['id'];
