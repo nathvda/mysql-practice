@@ -3,8 +3,6 @@ session_start();
 
 include './controllers/update_controller.php';
 
-
-
 ?>
 
 <!DOCTYPE html>

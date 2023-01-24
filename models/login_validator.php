@@ -66,7 +66,7 @@ class Login_Validator{
         $sql = "SELECT * FROM user WHERE username='$val'"; 
         $infos = $bdd->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 
-        if($this->params['password'] == $infos[0]['password']){
+        if(sha1($this->params['password']) == $infos[0]['password']){
 
             $_SESSION['logged_in'] = true;
 
