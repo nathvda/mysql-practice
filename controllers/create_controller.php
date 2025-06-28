@@ -36,6 +36,7 @@ echo "form properly sent";
 $succeed = true;
 
 $_SESSION = [];
+$_SESSION['logged_in'] = true;
 
 } else {
     echo "failed to send form";

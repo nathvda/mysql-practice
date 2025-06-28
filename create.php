@@ -62,7 +62,7 @@ include './controllers/create_controller.php';
 </html>
 
 <?php if($_SESSION['logged_in'] == false){
-    header('Location: ./log_in.php');
+    header('Location: ../log_in.php');
     exit();
 }
 
